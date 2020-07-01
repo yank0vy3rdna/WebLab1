@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab1</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+</head>
+<body>
+<table class="table">
+    <th colspan="2" class="table">
+        <div class="header-text">Крюков Андрей Юрьевич, P3214, вариант 2508</div>
+    </th>
+    <tr class="cnvs">
+        <td class="cnvs" colspan="2">
+            <canvas id="canvas"></canvas>
+        </td>
+    </tr>
+    <form id="form" action="answer.php" method="post">
+
+        <tr>
+            <td class="table">
+                <label>X</label>
+            </td>
+            <td class="table">
+                <input type="text" id="x" name="x" oninput="validate()" onchange="validate()">
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="table">
+                <label>Y</label>
+            </td>
+            <td class="table">
+                <div class="inpcontainer"><input type="text" id="y" name="y" oninput="validate()" onchange="validate()">
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="table">
+                <label>R</label>
+            </td>
+            <td class="table">
+                <div class="inpcontainer">
+                    <select name="r">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="table">Кнопка разблокирована в случае, если введенные данные корректны</td>
+            <td class="table">
+                <input type="button" id="btn" class="submit" value="Отправить" disabled></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table class="result-table">
+                    <thead>
+                        <td>X</td>
+                        <td>Y</td>
+                        <td>R</td>
+                        <td>RESULT</td>
+                    </thead>
+                    <tbody id="table_body">
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </form>
+
+
+</table>
+<script src="js/draw.js"></script>
+<script src="js/check.js"></script>
+<script src="js/table.js"></script>
+<script src="js/request.js"></script>
+</body>
+</html>
