@@ -1,7 +1,7 @@
 <?php
-$x = !empty($_POST['x']) ? $_POST['x'] : '';
-$y = !empty($_POST['y']) ? $_POST['y'] : '';
 $r = $_POST['r'];
+$x = $_POST['x'];
+$y = $_POST['y'];
 header('Content-type: application/json');
 $array = array("RESULT_CODE" => 1);
 $optionsX = array(
@@ -22,17 +22,17 @@ $optionsR = array(
         'max_range' => 5,
     )
 );
-if (filter_var($x, FILTER_VALIDATE_INT, $optionsX) and filter_var($y, FILTER_VALIDATE_INT, $optionsY) and filter_var($r, FILTER_VALIDATE_INT, $optionsR)) {
+if (is_numeric(filter_var($x, FILTER_VALIDATE_FLOAT, $optionsX)) and is_numeric(filter_var($y, FILTER_VALIDATE_FLOAT, $optionsY))  and is_numeric(filter_var($r, FILTER_VALIDATE_FLOAT, $optionsR))) {
     $array = array(
-        "X" => $x,
-        "Y" => $y,
-        "R" => $r,
+        "X" => floatval($x),
+        "Y" => floatval($y),
+        "R" => floatval($r),
         "RESULT" => true,
         "RESULT_CODE" => 0
     );
     if ($x > 0 and $y < 0) {
         $array["RESULT"] = false;
-    } elseif ($x < 0 and $x > -$r and $y > 0 and $y < $r) {
+    } elseif ($x < 0 and $x >= -$r and $y > 0 and $y <= $r) {
         $array["RESULT"] = true;
     } elseif ($x == 0 and $y > -$r / 2 and $y <= $r) {
         $array["RESULT"] = true;

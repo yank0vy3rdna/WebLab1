@@ -116,6 +116,7 @@ function draw() {
     }
 }
 function drawPoint(x,y){
+    draw()
     let ctx = $('#canvas')[0].getContext('2d')
     let R = ctx.canvas.height / 4 / $("select")[0].value
 

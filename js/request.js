@@ -6,6 +6,8 @@ function form_submit() {
     if (!(validateX($('#x')[0]) && validateY($('#y')[0]))){
         return false
     }
+    $('#x')[0].value =$('#x')[0].value.replace(',','.')
+    $('#y')[0].value =$('#y')[0].value.replace(',','.')
     $.post(form[0].action, form.serialize(), function (answer) {
         if(answer['RESULT_CODE']===0) {
             let data;

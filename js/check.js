@@ -1,5 +1,5 @@
 function validateX(inp) {
-    let val = parseInt(inp.value)
+    let val = parseInt(inp.value.replace(',','.'))
     if (isNaN(val)){
         return false
     }
@@ -7,7 +7,7 @@ function validateX(inp) {
 }
 
 function validateY(inp) {
-    let val = parseInt(inp.value)
+    let val = parseInt(inp.value.replace(',','.'))
     if (isNaN(val)){
         return false
     }

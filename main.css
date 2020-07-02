@@ -1,5 +1,4 @@
 #canvas {
-    width: 30vw;
     height: 30vh;
     padding: 1%;
 }
@@ -16,7 +15,6 @@ table.table{
 }
 .cnvs{;
     border: 1px solid grey;
-    height: 90%;
     text-align: center;
 }
 td.table{
