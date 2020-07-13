@@ -4,6 +4,7 @@ $x = $_POST['x'];
 $y = $_POST['y'];
 header('Content-type: application/json');
 $array = array("RESULT_CODE" => 1);
+$answer = "{\"RESULT_CODE\": 1}";
 $optionsX = array(
     'options' => array(
         'min_range' => -5,
@@ -45,6 +46,17 @@ if (is_numeric(filter_var($x, FILTER_VALIDATE_FLOAT, $optionsX)) and is_numeric(
     }else{
         $array["RESULT"] = false;
     }
+    $answer = "{\"X\":";
+    $answer .= $array["X"];
+    $answer .= ",\"Y\":";
+    $answer .= $array["Y"];
+    $answer .= ",\"R\":";
+    $answer .= $array["R"];
+    $answer .= ",\"RESULT\":";
+    $answer .= $array["RESULT"] ? 'true' : 'false';
+    $answer .= ",\"RESULT_CODE\":";
+    $answer .= $array["RESULT_CODE"];
+    $answer .= "}";
 }
 
-echo json_encode($array);
+echo $answer;
