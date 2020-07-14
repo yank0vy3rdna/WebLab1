@@ -1,4 +1,5 @@
 <?php
+$start_time = microtime();
 $r = $_POST['r'];
 $x = $_POST['x'];
 $y = $_POST['y'];
@@ -56,6 +57,10 @@ if (is_numeric(filter_var($x, FILTER_VALIDATE_FLOAT, $optionsX)) and is_numeric(
     $answer .= $array["RESULT"] ? 'true' : 'false';
     $answer .= ",\"RESULT_CODE\":";
     $answer .= $array["RESULT_CODE"];
+    $answer .= ", \"DATETIME\":\"";
+    $answer .= date("Y-m-d H:i:s");
+    $answer .= "\", \"COMPUTATION_TIME\":";
+    $answer .= microtime()-$start_time;
     $answer .= "}";
 }
 

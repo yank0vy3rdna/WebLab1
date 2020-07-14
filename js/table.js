@@ -17,6 +17,14 @@ function drawTable() {
         inner += "<td>"
         inner += data[i]['RESULT']
         inner += "</td>"
+
+        inner += "<td>"
+        inner += data[i]['DATETIME']
+        inner += "</td>"
+
+        inner += "<td>"
+        inner += data[i]['COMPUTATION_TIME']
+        inner += "</td>"
         inner += "</tr>"
     }
     table.innerHTML = inner
