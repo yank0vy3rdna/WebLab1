@@ -8,7 +8,7 @@ function IsJsonString(str) {
 }
 function drawTable() {
     let table = $("#table_body")[0];
-    if ((typeof Cookies.get("data") !== 'string')||(!IsJsonString(Cookies.get('data')))) {
+    if ((typeof Cookies.get("data") === 'string')&&(IsJsonString(Cookies.get('data')))) {
         let data = JSON.parse(Cookies.get("data"));
         let inner = "";
         for (let i = data.length - 1; i >= 0; i--) {
