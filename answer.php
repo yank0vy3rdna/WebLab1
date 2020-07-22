@@ -6,18 +6,6 @@ $y = $_POST['y'];
 header('Content-type: application/json');
 $array = array("RESULT_CODE" => 1);
 $answer = "{\"RESULT_CODE\": 1}";
-$optionsX = array(
-    'options' => array(
-        'min_range' => -5,
-        'max_range' => 5,
-    )
-);
-$optionsY = array(
-    'options' => array(
-        'min_range' => -3,
-        'max_range' => 5,
-    )
-);
 $optionsR = array(
     'options' => array(
         'min_range' => 1,
@@ -25,7 +13,11 @@ $optionsR = array(
     )
 );
 
-if (filter_var($x, FILTER_VALIDATE_FLOAT, $optionsX) !== FALSE and filter_var($y, FILTER_VALIDATE_FLOAT, $optionsY) !== FALSE and filter_var($r, FILTER_VALIDATE_FLOAT, $optionsR) !== FALSE) {
+if (filter_var($x, FILTER_VALIDATE_FLOAT) !== FALSE
+    and filter_var($y, FILTER_VALIDATE_FLOAT) !== FALSE
+    and filter_var($r, FILTER_VALIDATE_FLOAT, $optionsR) !== FALSE
+    and ($x <= 5) && ($x >= -5)
+    and($y >= -3) && ($y <= 5)) {
     $array = array(
         "X" => floatval($x),
         "Y" => floatval($y),
