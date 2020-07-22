@@ -1,3 +1,11 @@
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
 function drawTable() {
     let table = $("#table_body")[0];
     if ((typeof Cookies.get("data") !== 'string')||(!IsJsonString(Cookies.get('data')))) {
