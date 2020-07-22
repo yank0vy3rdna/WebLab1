@@ -18,7 +18,7 @@ function form_submit() {
     $.post(form[0].action, form.serialize(), function (answer) {
         if(answer['RESULT_CODE']===0) {
             let data;
-            if ((typeof Cookies.get("data") !== 'string')&&(IsJsonString(Cookies.get('data')))) {
+            if ((typeof Cookies.get("data") !== 'string')||(!IsJsonString(Cookies.get('data')))) {
                 data = [answer]
             } else{
                 data = JSON.parse(Cookies.get('data'))
