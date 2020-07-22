@@ -24,7 +24,8 @@ $optionsR = array(
         'max_range' => 5,
     )
 );
-if (is_numeric(filter_var($x, FILTER_VALIDATE_FLOAT, $optionsX)) and is_numeric(filter_var($y, FILTER_VALIDATE_FLOAT, $optionsY))  and is_numeric(filter_var($r, FILTER_VALIDATE_FLOAT, $optionsR))) {
+
+if (filter_var($x, FILTER_VALIDATE_FLOAT, $optionsX) !== FALSE and filter_var($y, FILTER_VALIDATE_FLOAT, $optionsY) !== FALSE and filter_var($r, FILTER_VALIDATE_FLOAT, $optionsR) !== FALSE) {
     $array = array(
         "X" => floatval($x),
         "Y" => floatval($y),
@@ -40,28 +41,15 @@ if (is_numeric(filter_var($x, FILTER_VALIDATE_FLOAT, $optionsX)) and is_numeric(
         $array["RESULT"] = true;
     } elseif ($y == 0 and $x >= -$r and $x <= $r) {
         $array["RESULT"] = true;
-    }elseif ($x>0 and $y>0 and ($x*$x+$y*$y)<=$r*$r){
+    } elseif ($x > 0 and $y > 0 and ($x * $x + $y * $y) <= $r * $r) {
         $array["RESULT"] = true;
-    }elseif ($x<0 and $y<0 and $y>=-$x/2-$r/2){
+    } elseif ($x < 0 and $y < 0 and $y >= -$x / 2 - $r / 2) {
         $array["RESULT"] = true;
-    }else{
+    } else {
         $array["RESULT"] = false;
     }
-    $answer = "{\"X\":";
-    $answer .= $array["X"];
-    $answer .= ",\"Y\":";
-    $answer .= $array["Y"];
-    $answer .= ",\"R\":";
-    $answer .= $array["R"];
-    $answer .= ",\"RESULT\":";
-    $answer .= $array["RESULT"] ? 'true' : 'false';
-    $answer .= ",\"RESULT_CODE\":";
-    $answer .= $array["RESULT_CODE"];
-    $answer .= ", \"DATETIME\":\"";
-    $answer .= date("Y-m-d H:i:s");
-    $answer .= "\", \"COMPUTATION_TIME\":";
-    $answer .= microtime()-$start_time;
-    $answer .= "}";
+    $array["DATETIME"] = date("Y-m-d H:i:s");
+    $array["COMPUTATION_TIME"] = microtime() - $start_time;
 }
 
-echo $answer;
+echo json_encode($array);
