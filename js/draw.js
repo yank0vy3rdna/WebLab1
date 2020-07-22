@@ -19,8 +19,12 @@ function draw_coordinates(ctx) {
     let R_text = $("select")[0].value
     ctx.strokeStyle = "black";
     ctx.fillStyle = "black";
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.webkitImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
     //Вертикальные черты
-    ctx.fillText(-R_text/2, ctx.canvas.width / 2.05+8, ctx.canvas.height / 2 + R / 2+2)
+    ctx.fillText(-R_text/2, Math.round((ctx.canvas.width / 2.05+8)), Math.round(ctx.canvas.height / 2 + R / 2+2))
     ctx.fillText(-R_text, ctx.canvas.width / 2.05+8, ctx.canvas.height / 2 + R+2)
     ctx.fillText(R_text/2, ctx.canvas.width / 2.05+8, ctx.canvas.height / 2 - R / 2+2)
     ctx.fillText(R_text, ctx.canvas.width / 2.05+8, ctx.canvas.height / 2 - R+2)
