@@ -42,6 +42,22 @@ if (filter_var($x, FILTER_VALIDATE_FLOAT) !== FALSE
     }
     $array["DATETIME"] = date("Y-m-d H:i:s");
     $array["COMPUTATION_TIME"] = microtime() - $start_time;
+    $answer = "{\"X\":";
+    $answer .= $array["X"];
+    $answer .= ",\"Y\":";
+    $answer .= $array["Y"];
+    $answer .= ",\"R\":";
+    $answer .= $array["R"];
+    $answer .= ",\"RESULT\":";
+    $answer .= $array["RESULT"] ? 'true' : 'false';
+    $answer .= ",\"RESULT_CODE\":";
+    $answer .= $array["RESULT_CODE"];
+    $answer .= ", \"DATETIME\":\"";
+    $answer .= $array["DATETIME"];
+    $answer .= "\", \"COMPUTATION_TIME\":";
+    $answer .= $array["COMPUTATION_TIME"];
+    $answer .= "}";
 }
 
-echo json_encode($array);
+//echo json_encode($array);
+echo $answer;
